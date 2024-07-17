@@ -1,13 +1,13 @@
-api_key: ""
-engine: "gpt-3.5-turbo"
+api_key: "Your Chatgpt Api number"
+engine: "gpt-3.5-turbo" # you can change it based on your condition
 proxy: null
 max_tokens: 4000  # Adjusted to a reasonable value based on the engine
 temperature: 0.5
 top_p: 1.0
-timeout: 100
+timeout: 100 # maybe you can set it up to null?
 presence_penalty: 0.0
 frequency_penalty: 0.0
 truncate_limit: 3000
 reply_count: 1
 system_prompt: "You are ChatGPT, a large language model trained by OpenAI. Respond conversationally"
-
+xelatex_path: "Your\\path\\to\\elatex.exe"

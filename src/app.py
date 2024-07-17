@@ -1,15 +1,20 @@
 from flask import Flask, render_template, request, send_file, jsonify
 import os
 import subprocess
+import yaml
 from chatbot import Chatbot
 
 app = Flask(__name__)
 
+# Load configuration from config.yaml
+with open('config.yaml', 'r') as config_file:
+    config = yaml.safe_load(config_file)
+
 # Initialize Chatbot with the path to your YAML configuration file
 chatbot = Chatbot.from_config('config.yaml')
 
-# Update this with the path to xelatex from MiKTeX
-xelatex_path = r'C:\Users\yosef\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe'
+# Get xelatex path from the configuration
+xelatex_path = config.get('xelatex_path')
 
 @app.route('/')
 def index():
@@ -34,7 +39,6 @@ def convert():
     except subprocess.CalledProcessError as e:
         return jsonify(success=False, error=str(e))
 
-
 @app.route('/pdf')
 def pdf():
     return send_file('static/latex_document.pdf')
@@ -47,7 +51,6 @@ def get_latex():
         return jsonify(success=True, latex=latex_code)
     except FileNotFoundError:
         return jsonify(success=False, error="LaTeX document not found.")
-
 
 @app.route('/ask', methods=['POST'])
 def ask():

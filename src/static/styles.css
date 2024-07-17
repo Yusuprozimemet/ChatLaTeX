@@ -7,31 +7,61 @@
 
 /* Basic styling for body */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light background color */
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+/* Theme variables */
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --card-bg-color: #fff;
+    --button-bg-color: #007bff;
+    --button-hover-bg-color: #0056b3;
+    --card-border-color: #ccc;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --link-color: #007bff;
+    --link-hover-color: #0056b3;
+}
+
+.dark-theme {
+    --bg-color: #333;
+    --text-color: #f0f0f0;
+    --card-bg-color: #444;
+    --button-bg-color: #0056b3;
+    --button-hover-bg-color: #007bff;
+    --card-border-color: #555;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    --link-color: #66b2ff;
+    --link-hover-color: #3399ff;
 }
 
 /* Container for the entire layout */
 .container {
-    display: flex;
-    height: 100vh; /* Full viewport height */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
 }
 
 /* Section for LaTeX Editor and Prompt Response */
 .latex-section {
     display: flex;
     flex-direction: column;
-    width: 30%; /* Adjust as needed */
-    padding: 20px;
+    gap: 20px;
 }
 
 /* Style for each editor section */
 .latex-editor, .prompt-response {
-    background-color: #fff; /* White background */
+    background-color: var(--card-bg-color);
     padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
 }
 
 /* Responsive styling for textarea and buttons */
@@ -40,56 +70,82 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     resize: vertical; /* Allow vertical resizing */
+    border: 1px solid var(--card-border-color);
+    border-radius: 4px;
+    font-family: 'Roboto Mono', monospace;
 }
 
 /* Button styles */
-#convert-pdf, #ask-button {
+button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: var(--button-bg-color);
     color: #fff;
     border: none;
     cursor: pointer;
-    margin-right: 10px; /* Add spacing between buttons */
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
-#convert-pdf:hover, #ask-button:hover {
-    background-color: #0056b3;
+button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 /* Styling for the response area */
 #response {
     margin-top: 10px;
     padding: 10px;
-    background-color: #f9f9f9; /* Light gray background */
-    border: 1px solid #ccc;
+    background-color: var(--card-bg-color); /* Light gray background */
+    border: 1px solid var(--card-border-color);
     min-height: 100px; /* Ensure minimal height */
     max-height: 300px; /* Limit max height */
     overflow-y: auto; /* Enable vertical scrolling */
     white-space: pre-wrap; /* Preserve whitespace and enable text wrapping */
     cursor: text; /* Change cursor to text to allow text selection */
+    border-radius: 4px;
 }
 
 /* PDF Viewer section */
 .pdf-viewer {
-    flex: 1; /* Take remaining space */
     padding: 20px;
-    background-color: #fff; /* White background */
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--card-border-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 8px;
 }
 
 /* Responsive styling for embedded PDF viewer */
 #pdf-view {
     width: 100%;
     height: 100%;
+    border: none;
 }
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column; /* Stack sections vertically on smaller screens */
+        grid-template-columns: 1fr; /* Stack sections vertically on smaller screens */
     }
-    .latex-section, .pdf-viewer {
-        width: 100%; /* Full width on smaller screens */
-    }
+}
+
+/* Theme toggle switch */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--button-bg-color);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background: var(--button-hover-bg-color);
 }

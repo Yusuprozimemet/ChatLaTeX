@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaTeX Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <button class="theme-toggle">Toggle Theme</button>
     <div class="container">
         <div class="latex-section">
             <div class="latex-editor">
                 <h2>LaTeX Editor:</h2>
-                <textarea id="latex-code" name="latex" rows="10" cols="80"></textarea>
-                <button id="convert-pdf">Convert PDF</button>
+                <textarea id="latex-code" name="latex" rows="10" cols="80" placeholder="Enter LaTeX code here..."></textarea>
+                <button id="convert-pdf">Convert to PDF</button>
             </div>
             <div class="prompt-response">
                 <h2>Command Prompt:</h2>
-                <textarea id="prompt-text" name="prompt" rows="5" cols="80"></textarea>
-                <button id="ask-button">Ask Question</button>
+                <textarea id="prompt-text" name="prompt" rows="5" cols="80" placeholder="Ask a question..."></textarea>
+                <button id="ask-button">Submit Question</button>
                 <div id="response"></div>
             </div>
         </div>
@@ -69,6 +71,13 @@
                     }
                 };
                 xhr.send('prompt=' + encodeURIComponent(prompt));
+            });
+
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            const body = document.body;
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
             });
         });
     </script>

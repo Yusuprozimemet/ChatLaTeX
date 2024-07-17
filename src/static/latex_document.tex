@@ -1,49 +1,37 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+\documentclass[12pt]{letter}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
 \usepackage{geometry}
-\usepackage{xcolor}
-\usepackage{fontspec}
+\geometry{a4paper, margin=1in}
+\usepackage{setspace}
+\usepackage{hyperref}
 
-% Define your colors
-\definecolor{myblue}{RGB}{33, 63, 127}
-\definecolor{mygray}{RGB}{128, 128, 128}
-
-% Set your page margins
-\geometry{top=1in, bottom=1in, left=1in, right=1in}
-
-% Define your header and footer
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-
-% Set your title
-\title{\textcolor{myblue}{Internship Position Application \\[2ex] \large at Rijk Zwaan}}
-\author{}
-\date{\textcolor{myblue}{\today}}
-
-\setmainfont{Arial} % Set the main font to Arial
+% Make sure to include the latest versions of these packages
+\usepackage{pgf}
+\usepackage{pgffor}
+\usepackage{pgfkeys}
+\usepackage{pgfplots}
 
 \begin{document}
 
-\maketitle
+\begin{letter}{Hiring Manager \\ XYZ Corporation \\ 1234 Elm Street \\ City, State, 56789}
 
-Dear Committee member,
-\\[3pt]
+\opening{Dear Hiring Manager,}
 
-I am writing to express my sincere interest in the Internship in Biochemistry and AI, as advertised. The prospect of learning from you and contributing to your research team, while furthering my academic growth in the area of my keen interest, is incredibly exciting.
+I am writing to express my interest in the [Job Title] position at XYZ Corporation, as advertised on [Job Portal/Company Website]. With a strong background in [Your Field], I am excited about the opportunity to contribute to your team and help XYZ Corporation achieve its strategic goals.
 
-\section*{My Background}
+I hold a [Your Degree] in [Your Major] from [Your University], where I developed a solid foundation in [Relevant Skills or Knowledge]. My experience includes [Briefly Describe Your Previous Job or Internship], where I successfully [Mention Key Achievements or Responsibilities]. These experiences have equipped me with a diverse skill set, including [List Relevant Skills], which I believe will be highly valuable in this role.
 
-I am a Uyghur who was born and raised in the Uyghur region of China. I earned my Bachelor's degree in biotechnology from Xinjiang University in China. Subsequently, I pursued my Master's degree in molecular diagnostics at the University of Camerino in Italy. Following my Master's, I had the opportunity to visit the Hebrew University of Jerusalem. Although I initially expected to pursue my Ph.D. in Europe and was accepted into the RNA Biology Lab at IMol, the Polish Academy of Sciences, challenges in obtaining a residence card in Poland due to various factors, coupled with the inability to return to China due to political issues affecting Uyghurs, led me to seek asylum in the Netherlands.
+One of my key strengths is [Highlight a Strength or Skill]. For instance, in my previous role at [Previous Company], I [Describe an Achievement or Responsibility]. This experience taught me the importance of [Key Learning Point], and I am eager to bring this perspective to XYZ Corporation.
 
-\section*{Motivation}
-Nevertheless, I now have permission to work for a short period. This position aligns perfectly with my current situation, allowing me to leverage my skills and knowledge in a practical and impactful manner. In addition to my scientific background, I have a keen interest in AI and data analysis, with a basic understanding of image analysis and photography. Thank you for considering my application. I look forward to discussing the internship.
+I am particularly drawn to this opportunity at XYZ Corporation because of your commitment to [Mention a Company Value, Project, or Initiative that You Admire]. I am impressed by [Specific Detail about the Company], and I am excited about the possibility of contributing to such a forward-thinking organization.
 
-\textbf{Sincerely,}
-\\[15pt]
-\textcolor{myblue}{Yusufu Rouzimaimaiti (Yusup Rozimemet)\\
-}
+Thank you for considering my application. I look forward to the opportunity to discuss how my background, skills, and enthusiasms align with the goals of XYZ Corporation. Please find my resume attached for your review. I am available at your earliest convenience for an interview and can be reached at [Your Phone Number] or via email at [Your Email Address].
+
+\closing{Sincerely,\\[2\baselineskip] Your Name}
+
+\end{letter}
 
 \end{document}
