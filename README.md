@@ -1,2 +1,1 @@
 # ChatCV
-sk-None-pNpbn8TZ32VV2gw5iA49T3BlbkFJycMhOHVuoOfDMJBePpCA

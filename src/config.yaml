@@ -1,4 +1,4 @@
-api_key: "sk-None-pNpbn8TZ32VV2gw5iA49T3BlbkFJycMhOHVuoOfDMJBePpCA"
+api_key: ""
 engine: "gpt-3.5-turbo"
 proxy: null
 max_tokens: 4000  # Adjusted to a reasonable value based on the engine
