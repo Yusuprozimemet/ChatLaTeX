@@ -11,7 +11,7 @@ ChatLaTeX is a simplified text-based version of ChatLaTeX, designed to assist yo
 - **Real-time LaTeX Editing**: ChatGPT reads your LaTeX code in real-time, allowing for instant feedback and modifications.
 - **Generate Documents**: Easily generate CVs or cover letters based on specific prompts or requirements.
 - **Dynamic Responses**: Ask ChatGPT to create documents based on job requirements, such as "please write a cover letter based on the requirements of Company X, their requirements are 1, 2, 3,...".
-- **Flexibility**: If a full LaTeX code is not provided in the prompt, ChatGPT may respond with text that you can incorporate into your document.
+- **Flexibility**: If a full LaTeX code is not asked in the prompt, ChatGPT may respond with text that you can incorporate into your document.
 
 ## Usage Instructions
 1. **Setup MiKTeX**:
