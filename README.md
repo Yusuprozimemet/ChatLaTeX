@@ -1,4 +1,4 @@
-# ChatLaTex
+# ChatLaTeX
 
 <div align="center">
   <img src="Screenshot.png" alt="Icon" width="800"/>
