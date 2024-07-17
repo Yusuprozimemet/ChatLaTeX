@@ -1,0 +1,13 @@
+api_key: "sk-None-pNpbn8TZ32VV2gw5iA49T3BlbkFJycMhOHVuoOfDMJBePpCA"
+engine: "gpt-3.5-turbo"
+proxy: null
+max_tokens: 4000  # Adjusted to a reasonable value based on the engine
+temperature: 0.5
+top_p: 1.0
+timeout: 100
+presence_penalty: 0.0
+frequency_penalty: 0.0
+truncate_limit: 3000
+reply_count: 1
+system_prompt: "You are ChatGPT, a large language model trained by OpenAI. Respond conversationally"
+

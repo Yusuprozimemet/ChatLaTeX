@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="latex-section">
+            <div class="latex-editor">
+                <h2>LaTeX Editor:</h2>
+                <textarea id="latex-code" name="latex" rows="10" cols="80"></textarea>
+                <button id="convert-pdf">Convert PDF</button>
+            </div>
+            <div class="prompt-response">
+                <h2>Command Prompt:</h2>
+                <textarea id="prompt-text" name="prompt" rows="5" cols="80"></textarea>
+                <button id="ask-button">Ask Question</button>
+                <div id="response"></div>
+            </div>
+        </div>
+        <div class="pdf-viewer">
+            <h2>PDF Viewer:</h2>
+            <embed id="pdf-view" src="{{ url_for('pdf') }}" type="application/pdf" width="100%" height="100%">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/latex')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('latex-code').value = data.latex;
+                    } else {
+                        alert('Failed to load LaTeX code: ' + data.error);
+                    }
+                });
+
+            document.getElementById('convert-pdf').addEventListener('click', function() {
+                var latexCode = document.getElementById('latex-code').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/convert', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            document.getElementById('pdf-view').src = "{{ url_for('pdf') }}";
+                        } else {
+                            alert('PDF conversion failed: ' + response.error);
+                        }
+                    }
+                };
+                xhr.send('latex=' + encodeURIComponent(latexCode));
+            });
+
+            document.getElementById('ask-button').addEventListener('click', function() {
+                var prompt = document.getElementById('prompt-text').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/ask', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById('response').innerText = response.response;
+                    }
+                };
+                xhr.send('prompt=' + encodeURIComponent(prompt));
+            });
+        });
+    </script>
+</body>
+</html>

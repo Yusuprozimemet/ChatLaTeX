@@ -1,0 +1,6 @@
+Flask
+pypandoc
+requests
+tiktoken
+PyYAML
+# -e .
