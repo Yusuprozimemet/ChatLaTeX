@@ -1,5 +1,4 @@
 Flask
-pypandoc
 requests
 tiktoken
 PyYAML
