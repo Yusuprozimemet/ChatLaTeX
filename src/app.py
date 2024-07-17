@@ -8,8 +8,8 @@ app = Flask(__name__)
 # Initialize Chatbot with the path to your YAML configuration file
 chatbot = Chatbot.from_config('config.yaml')
 
-# Update this with the path to pdflatex from MiKTeX
-pdflatex_path = r'C:\Users\yosef\AppData\Local\Programs\MiKTeX\miktex\bin\x64\pdflatex.exe'
+# Update this with the path to xelatex from MiKTeX
+xelatex_path = r'C:\Users\yosef\AppData\Local\Programs\MiKTeX\miktex\bin\x64\xelatex.exe'
 
 @app.route('/')
 def index():
@@ -19,13 +19,17 @@ def index():
 def convert():
     latex_code = request.form['latex']
 
+    # Ensure the LaTeX code has the necessary structure
+    if not latex_code.startswith(r'\documentclass'):
+        latex_code = r'\documentclass{article}\begin{document}' + latex_code + r'\end{document}'
+
     # Save LaTeX code to latex_document.tex in the static folder
     with open('static/latex_document.tex', 'w') as f:
         f.write(latex_code)
 
-    # Convert LaTeX to PDF
+    # Convert LaTeX to PDF using xelatex
     try:
-        subprocess.run([pdflatex_path, '-output-directory', 'static', 'static/latex_document.tex'], check=True)
+        subprocess.run([xelatex_path, '-output-directory', 'static', 'static/latex_document.tex'], check=True)
         return jsonify(success=True, latex=latex_code)
     except subprocess.CalledProcessError as e:
         return jsonify(success=False, error=str(e))
@@ -48,10 +52,15 @@ def get_latex():
 @app.route('/ask', methods=['POST'])
 def ask():
     prompt = request.form['prompt']
-    chatbot.add_message("user", prompt)
     try:
+        with open('static/latex_document.tex', 'r') as f:
+            latex_code = f.read()
+        combined_prompt = f"Here's the LaTeX document:\n\n{latex_code}\n\nUser command:\n{prompt}"
+        chatbot.add_message("user", combined_prompt)
         response = chatbot.send_request()
         return jsonify(response=response)
+    except FileNotFoundError:
+        return jsonify(response="LaTeX document not found.")
     except Exception as e:
         return jsonify(response=str(e))
 
