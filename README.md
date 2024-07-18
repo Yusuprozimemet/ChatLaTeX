@@ -5,7 +5,7 @@
 </div>
 
 ## Overview
-ChatLaTeX is a simplified text-based version of ChatLaTeX, designed to assist you in editing your CV and resume with the help of ChatGPT. This tool allows ChatGPT to continuously read and interpret your LaTeX code in the LaTeX editor, enabling you to make dynamic and intelligent requests for generating CVs, cover letters, and other professional documents.
+ChatLaTeX is a simplified text-based version, designed to assist you in editing your CV and resume with the help of ChatGPT. This tool allows ChatGPT to continuously read and interpret your LaTeX code in the LaTeX editor, enabling you to make dynamic and intelligent requests for generating CVs, cover letters, and other professional documents.
 
 ## Features
 - **Real-time LaTeX Editing**: ChatGPT reads your LaTeX code in real-time, allowing for instant feedback and modifications.
